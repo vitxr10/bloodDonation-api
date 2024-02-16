@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "Z+OIl+75XhmJwBir+8MlKZIi7TGHIYmkqhDj1DsOaNA=",
+  "Source": "BloodDonation.API",
+  "BasePath": "_content/BloodDonation.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
