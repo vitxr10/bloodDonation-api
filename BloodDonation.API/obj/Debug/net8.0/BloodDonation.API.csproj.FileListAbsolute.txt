@@ -16,6 +16,7 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.csproj.CoreCompileInputs.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.sourcelink.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets\msbuild.BloodDonation.API.Microsoft.AspNetCore.StaticWebAssets.props

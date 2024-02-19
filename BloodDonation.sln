@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodDonation.API", "BloodDonation.API\BloodDonation.API.csproj", "{894339D4-947D-499F-8699-1B60607E8762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodDonation.API", "BloodDonation.API\BloodDonation.API.csproj", "{894339D4-947D-499F-8699-1B60607E8762}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodDonation.Core", "BloodDonation.Core\BloodDonation.Core.csproj", "{F9165764-F9F9-4798-A46B-03ABE7B927C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodDonation.Infrastructure", "BloodDonation.Infrastructure\BloodDonation.Infrastructure.csproj", "{336F7C03-5D07-46A8-8DD1-245BF0DA3327}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{894339D4-947D-499F-8699-1B60607E8762}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{894339D4-947D-499F-8699-1B60607E8762}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{894339D4-947D-499F-8699-1B60607E8762}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9165764-F9F9-4798-A46B-03ABE7B927C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9165764-F9F9-4798-A46B-03ABE7B927C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9165764-F9F9-4798-A46B-03ABE7B927C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9165764-F9F9-4798-A46B-03ABE7B927C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{336F7C03-5D07-46A8-8DD1-245BF0DA3327}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{336F7C03-5D07-46A8-8DD1-245BF0DA3327}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{336F7C03-5D07-46A8-8DD1-245BF0DA3327}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{336F7C03-5D07-46A8-8DD1-245BF0DA3327}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
