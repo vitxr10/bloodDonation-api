@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using BloodDonation.Core.Entities;
+using BloodDonation.Core.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BloodDonation.API.Controllers
@@ -7,10 +9,17 @@ namespace BloodDonation.API.Controllers
     [ApiController]
     public class DonorController : ControllerBase
     {
-        [HttpGet]
-        public IActionResult GetAll()
+        private readonly IDonorRepository _donorRepository;
+        public DonorController(IDonorRepository donorRepository)
         {
-            return Ok();
+            _donorRepository = donorRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAll()
+        {
+            var donors = await _donorRepository.GetAllAsync();
+            return Ok(donors);
         }
 
         [HttpGet("{id}")]
@@ -20,11 +29,13 @@ namespace BloodDonation.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Donor donor) 
+        public async Task<IActionResult> Post([FromBody] Donor donor) 
         {
+            await _donorRepository.CreateAsync(donor);
+
             return CreatedAtAction(nameof(GetById), new { id = donor.Id }, donor);
         }
-
+            
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Donor donor)
         {
