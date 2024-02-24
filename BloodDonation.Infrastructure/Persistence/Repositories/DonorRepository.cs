@@ -26,14 +26,6 @@ namespace BloodDonation.Infrastructure.Persistence.Repositories
             return donor.Id;
         }
 
-        public async Task DeleteAsync(int id)
-        {
-            var donor = await _dbContext.Donors.SingleOrDefaultAsync(d => d.Id == id);
-
-            _dbContext.Donors.Remove(donor);
-            await _dbContext.SaveChangesAsync();
-        }
-
         public Task<List<Donor>> GetAllAsync()
         {
             return _dbContext.Donors.ToListAsync();
@@ -44,11 +36,8 @@ namespace BloodDonation.Infrastructure.Persistence.Repositories
             return await _dbContext.Donors.SingleOrDefaultAsync(d => d.Id == id);
         }
 
-        public async Task UpdateAsync(int id, Donor donor)
+        public async Task SaveAsync(Donor donor)
         {
-            var donorDb = await _dbContext.Donors.SingleOrDefaultAsync(d => d.Id == id);
-
-            _dbContext.Donors.Update(donorDb);
             await _dbContext.SaveChangesAsync();
         }
     }

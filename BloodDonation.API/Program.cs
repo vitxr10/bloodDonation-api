@@ -1,5 +1,7 @@
+using BloodDonation.Application.Commands.CreateDonor;
 using BloodDonation.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,9 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+var myHandlers = AppDomain.CurrentDomain.Load("BloodDonation.Application");
+builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(myHandlers));
 
 builder.Services.AddDbContext<BloodDonationDbContext>(options => options.UseInMemoryDatabase("BloodDonationDb"));
 

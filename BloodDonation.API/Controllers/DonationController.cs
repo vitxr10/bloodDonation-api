@@ -1,4 +1,6 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Application.Commands.CreateDonor;
+using BloodDonation.Core.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +10,12 @@ namespace BloodDonation.API.Controllers
     [ApiController]
     public class DonationController : ControllerBase
     {
+        private readonly IMediator _mediatR;
+        public DonationController(IMediator mediatR)
+        {
+            _mediatR = mediatR;
+        }
+
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -21,9 +29,11 @@ namespace BloodDonation.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Donor donor)
+        public async Task<IActionResult> Post([FromBody] CreateDonorCommand command)
         {
-            return CreatedAtAction(nameof(GetById), new { id = donor.Id }, donor);
+            int id = await _mediatR.Send(command);
+
+            return CreatedAtAction(nameof(GetById), new { id = id }, command);
         }
 
         [HttpPut("{id}")]
