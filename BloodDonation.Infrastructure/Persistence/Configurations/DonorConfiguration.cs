@@ -23,6 +23,7 @@ namespace BloodDonation.Infrastructure.Persistence.Configurations
 
             builder.HasOne(d => d.Address)
                 .WithOne(a => a.Donor)
+                .HasForeignKey<Address>(a => a.DonorId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

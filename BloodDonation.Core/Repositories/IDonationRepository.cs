@@ -7,14 +7,11 @@ using System.Threading.Tasks;
 
 namespace BloodDonation.Core.Repositories
 {
-    public interface IDonorRepository
+    public interface IDonationRepository
     {
-        Task<List<Donor>> GetAllAsync();
-        Task<Donor> GetByIdAsync(int id);
-        Task<int> CreateAsync(Donor donor);
+        Task<List<Donation>> GetAllAsync();
+        Task<Donation> GetByIdAsync(int id);
+        Task<int> CreateAsync(Donation donation);
         Task SaveAsync();
-
-
-
     }
 }

@@ -11,9 +11,13 @@ namespace BloodDonation.Application.Commands.UpdateDonor
 {
     public class UpdateDonorCommand : IRequest
     {
+        public UpdateDonorCommand(int id)
+        {
+            Id = id;
+        }
+
         public int Id { get; set; }
         public string Email { get; set; }
         public double Weight { get; set; }
-        public Address Address { get; set; }
     }
 }

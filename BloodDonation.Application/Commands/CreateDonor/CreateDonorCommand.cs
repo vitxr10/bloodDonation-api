@@ -1,4 +1,5 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Core.DTOs;
+using BloodDonation.Core.Entities;
 using BloodDonation.Core.Enums;
 using MediatR;
 using System;
@@ -18,6 +19,6 @@ namespace BloodDonation.Application.Commands.CreateDonor
         public double Weight { get; set; }
         public BloodTypeEnum BloodType { get; set; }
         public RHFactorEnum RHFactor { get; set; }
-        public Address Address { get; set; }
+        public AddressDTO Address { get; set; }
     }
 }

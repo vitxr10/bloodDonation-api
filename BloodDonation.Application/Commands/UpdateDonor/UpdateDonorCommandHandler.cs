@@ -21,9 +21,9 @@ namespace BloodDonation.Application.Commands.UpdateDonor
         {
             var donor = await _donorRepository.GetByIdAsync(request.Id);
 
-            donor.Update(request.Email, request.Weight, request.Address);
+            donor.Update(request.Email, request.Weight);
 
-            await _donorRepository.SaveAsync(donor);
+            await _donorRepository.SaveAsync();
         }
     }
 }

@@ -22,7 +22,7 @@ namespace BloodDonation.Application.Commands.DeleteDonor
 
             donor.Delete();
 
-            await _donorRepository.SaveAsync(donor);
+            await _donorRepository.SaveAsync();
         }
     }
 }

@@ -1,5 +1,7 @@
 using BloodDonation.Application.Commands.CreateDonor;
+using BloodDonation.Core.Repositories;
 using BloodDonation.Infrastructure.Persistence.Context;
+using BloodDonation.Infrastructure.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,10 +14,18 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-var myHandlers = AppDomain.CurrentDomain.Load("BloodDonation.Application");
-builder.Services.AddMediatR(x => x.RegisterServicesFromAssemblies(myHandlers));
-
+// context
 builder.Services.AddDbContext<BloodDonationDbContext>(options => options.UseInMemoryDatabase("BloodDonationDb"));
+
+// mediatR
+//builder.Services.AddMediatR(typeof(CreateDonorCommand));
+var myHandlers = AppDomain.CurrentDomain.Load("BloodDonation.Application");
+builder.Services.AddMediatR(m => m.RegisterServicesFromAssemblies(myHandlers));
+
+// interfaces
+builder.Services.AddScoped<IDonorRepository, DonorRepository>();
+
+
 
 var app = builder.Build();
 

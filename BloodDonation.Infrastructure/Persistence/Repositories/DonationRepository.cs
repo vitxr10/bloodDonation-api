@@ -10,30 +10,30 @@ using System.Threading.Tasks;
 
 namespace BloodDonation.Infrastructure.Persistence.Repositories
 {
-    public class DonorRepository : IDonorRepository
+    public class DonationRepository : IDonationRepository
     {
         private readonly BloodDonationDbContext _dbContext;
-        public DonorRepository(BloodDonationDbContext dbContext)
+        public DonationRepository(BloodDonationDbContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public async Task<int> CreateAsync(Donor donor)
+        public async Task<int> CreateAsync(Donation donation)
         {
-            await _dbContext.Donors.AddAsync(donor);
+            await _dbContext.Donations.AddAsync(donation);
             await _dbContext.SaveChangesAsync();
 
-            return donor.Id;
+            return donation.Id;
         }
 
-        public Task<List<Donor>> GetAllAsync()
+        public async Task<List<Donation>> GetAllAsync()
         {
-            return _dbContext.Donors.ToListAsync();
+            return await _dbContext.Donations.ToListAsync();
         }
 
-        public async Task<Donor> GetByIdAsync(int id)
+        public async Task<Donation> GetByIdAsync(int id)
         {
-            return await _dbContext.Donors.SingleOrDefaultAsync(d => d.Id == id);
+            return await _dbContext.Donations.SingleOrDefaultAsync(d => d.Id == id);
         }
 
         public async Task SaveAsync()

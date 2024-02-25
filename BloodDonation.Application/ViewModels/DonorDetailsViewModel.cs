@@ -1,17 +1,18 @@
-﻿using BloodDonation.Core.Enums;
+﻿using BloodDonation.Core.Entities;
+using BloodDonation.Core.Enums;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodDonation.Core.Entities
+namespace BloodDonation.Application.ViewModels
 {
-    public class Donor
+    public class DonorDetailsViewModel
     {
-        public Donor(string fullName, string email, DateTime birthDate, GenderEnum gender, double weight, BloodTypeEnum bloodType, RHFactorEnum rHFactor)
+        public DonorDetailsViewModel(int id, string fullName, string email, DateTime birthDate, GenderEnum gender, double weight, BloodTypeEnum bloodType, RHFactorEnum rHFactor, bool active)
         {
+            Id = id;
             FullName = fullName;
             Email = email;
             BirthDate = birthDate;
@@ -19,7 +20,7 @@ namespace BloodDonation.Core.Entities
             Weight = weight;
             BloodType = bloodType;
             RHFactor = rHFactor;
-            Active = true;
+            Active = active;
         }
 
         public int Id { get; set; }
@@ -31,20 +32,5 @@ namespace BloodDonation.Core.Entities
         public BloodTypeEnum BloodType { get; set; }
         public RHFactorEnum RHFactor { get; set; }
         public bool Active { get; set; }
-        public List<Donation>? Donations { get; private set; }
-        public Address? Address { get; set; }
-
-        public void Update (string email, double weight)
-        {
-            Email = email;
-            Weight = weight;
-        }
-
-        public void Delete()
-        {
-            Active = false;
-        }
-
-
     }
 }

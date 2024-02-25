@@ -1,5 +1,11 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Application.Commands.CreateDonor;
+using BloodDonation.Application.Commands.DeleteDonor;
+using BloodDonation.Application.Commands.UpdateDonor;
+using BloodDonation.Application.Queries.GetAllDonors;
+using BloodDonation.Application.Queries.GetDonor;
+using BloodDonation.Core.Entities;
 using BloodDonation.Core.Repositories;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,42 +15,57 @@ namespace BloodDonation.API.Controllers
     [ApiController]
     public class DonorController : ControllerBase
     {
-        private readonly IDonorRepository _donorRepository;
-        public DonorController(IDonorRepository donorRepository)
+        private readonly IMediator _mediatR;
+        public DonorController(IMediator mediatR)
         {
-            _donorRepository = donorRepository;
+            _mediatR = mediatR;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var donors = await _donorRepository.GetAllAsync();
+            var query = new GetAllDonorsQuery();
+
+            var donors = await _mediatR.Send(query);
+
             return Ok(donors);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok();
+            var query = new GetDonorByIdQuery(id);
+
+            var donor = await _mediatR.Send(query);
+
+            return Ok(donor);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Donor donor) 
+        public async Task<IActionResult> Post([FromBody] CreateDonorCommand command)
         {
-            await _donorRepository.CreateAsync(donor);
+            int id = await _mediatR.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = donor.Id }, donor);
+            return CreatedAtAction(nameof(GetById), new { id }, command);
         }
-            
+
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Donor donor)
+        public async Task<IActionResult> Put(int id, [FromBody] UpdateDonorCommand command)
         {
+            command.Id = id;
+
+            await _mediatR.Send(command);
+
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public async Task<IActionResult> Delete(int id)
         {
+            var command = new DeleteDonorCommand(id);
+
+            await _mediatR.Send(command);
+
             return NoContent();
         }
     }

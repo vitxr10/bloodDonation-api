@@ -27,11 +27,25 @@ namespace BloodDonation.Application.Commands.CreateDonor
                 request.Gender,
                 request.Weight,
                 request.BloodType,
-                request.RHFactor,
-                request.Address
+                request.RHFactor
                 );
 
             await _donorRepository.CreateAsync(donor);
+
+            var requestAddress = request.Address;
+            var address = new Address
+                (
+                requestAddress.Neighborhood,
+                requestAddress.City,
+                requestAddress.State,
+                requestAddress.ZipCode,
+                donor.Id
+                );
+
+            donor.Address = address;
+
+            await _donorRepository.SaveAsync();
+
 
             return donor.Id;
         }
