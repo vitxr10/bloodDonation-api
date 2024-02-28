@@ -5,25 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodDonation.Core.Entities
+namespace BloodDonation.Application.ViewModels
 {
-    public class Stock
+    public class StockViewModel
     {
-        public Stock(BloodTypeEnum bloodType, RHFactorEnum rHFactor)
+        public StockViewModel(int id, BloodTypeEnum bloodType, RHFactorEnum rHFactor, double amountInML)
         {
+            Id = id;
             BloodType = bloodType;
             RHFactor = rHFactor;
-            AmountInML = 0;
+            AmountInML = amountInML;
         }
 
         public int Id { get; set; }
         public BloodTypeEnum BloodType { get; set; }
         public RHFactorEnum RHFactor { get; set; }
         public double AmountInML { get; set; }
-
-        public void UpdateBloodStock(double amount)
-        {
-            AmountInML += amount;
-        }
     }
 }

@@ -1,4 +1,7 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Application.Commands.CreateDonation;
+using BloodDonation.Application.Queries.GetAllDonations;
+using BloodDonation.Application.Queries.GetDonationById;
+using BloodDonation.Core.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -16,28 +19,39 @@ namespace BloodDonation.API.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAll()
+        public async Task<IActionResult> GetAll()
         {
-            return Ok();
+            var query = new GetAllDonationsQuery();
+
+            var donations = await _mediatR.Send(query);
+
+            return Ok(donations);
         }
 
         [HttpGet("{id}")]
-        public IActionResult GetById(int id)
+        public async Task<IActionResult> GetById(int id)
         {
-            return Ok();
+            var query = new GetDonationByIdQuery(id);
+
+            var donation = await _mediatR.Send(query);
+
+            return Ok(donation);
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] Donor donor)
+        public async Task<IActionResult> Post([FromBody] CreateDonationCommand command)
         {
+            try
+            {
+                int id = await _mediatR.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id = donor.Id }, donor);
-        }
+                return CreatedAtAction(nameof(GetById), new { id = id }, command);
+            }
+            catch(DirectoryNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
 
-        [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] Donor donor)
-        {
-            return NoContent();
         }
 
     }

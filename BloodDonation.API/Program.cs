@@ -24,6 +24,8 @@ builder.Services.AddMediatR(m => m.RegisterServicesFromAssemblies(myHandlers));
 
 // interfaces
 builder.Services.AddScoped<IDonorRepository, DonorRepository>();
+builder.Services.AddScoped<IDonationRepository, DonationRepository>();
+builder.Services.AddScoped<IStockRepository, StockRepository>();
 
 
 
