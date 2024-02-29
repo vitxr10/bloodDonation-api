@@ -30,6 +30,9 @@ namespace BloodDonation.Application.Commands.CreateDonor
                 request.RHFactor
                 );
 
+            if (await _donorRepository.GetByEmailAsync(donor.Email))
+                throw new Exception("Não se pode cadastrar doadores com o mesmo email.");
+
             await _donorRepository.CreateAsync(donor);
 
             var requestAddress = request.Address;

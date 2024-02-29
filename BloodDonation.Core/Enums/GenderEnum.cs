@@ -9,8 +9,7 @@ namespace BloodDonation.Core.Enums
     public enum GenderEnum
     {
         Female = 0,
-        Male = 1,
-        Other = 3
+        Male = 1
 
 
     }

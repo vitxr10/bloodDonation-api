@@ -36,6 +36,11 @@ namespace BloodDonation.Infrastructure.Persistence.Repositories
             return await _dbContext.Donors.SingleOrDefaultAsync(d => d.Id == id);
         }
 
+        public async Task<bool> GetByEmailAsync(string email)
+        {
+            return await _dbContext.Donors.AnyAsync(d => d.Email == email);
+        }
+
         public async Task SaveAsync()
         {
             await _dbContext.SaveChangesAsync();

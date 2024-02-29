@@ -25,14 +25,21 @@ namespace BloodDonation.Application.Commands.CreateDonation
         {
             var donation = new Donation(request.DonorId, DateTime.Now, request.AmountInML);
 
+            var donor = await _donorRepository.GetByIdAsync(donation.DonorId);
+            if (donor == null)
+                throw new Exception("Doador não encontrado.");
+
+            if (!donor.IsValid())
+                throw new Exception("O doador não cumpre os requisitos para fazer uma doação.");
+
+            var stock = await _stockRepository.GetByBloodTypeAsync(donor.BloodType, donor.RHFactor);
+            if (stock == null)
+                throw new Exception("Não há estoque para esse tipo sanguíneo.");
+
             await _donationRepository.CreateAsync(donation);
 
-            var donor = await _donorRepository.GetByIdAsync(donation.DonorId);
-            var stock = await _stockRepository.GetByBloodTypeAsync(donor.BloodType, donor.RHFactor);
-
-            if (stock == null)
-                throw new DirectoryNotFoundException("Não há estoque para esse tipo sanguíneo.");
-           
+            donor.UpdateLastDonation();
+            await _donorRepository.SaveAsync();
 
             stock.UpdateBloodStock(donation.AmountInML);
             await _stockRepository.SaveAsync();

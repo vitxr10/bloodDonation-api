@@ -32,6 +32,7 @@ namespace BloodDonation.Application.Queries.GetDonorById
                     donor.Weight,
                     donor.BloodType,
                     donor.RHFactor,
+                    donor.LastDonation,
                     donor.Active
                 );
 

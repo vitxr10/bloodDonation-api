@@ -145,3 +145,6 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.genruntimeconfig.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\ref\BloodDonation.API.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

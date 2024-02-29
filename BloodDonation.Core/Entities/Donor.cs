@@ -30,14 +30,40 @@ namespace BloodDonation.Core.Entities
         public double Weight { get; set; }
         public BloodTypeEnum BloodType { get; set; }
         public RHFactorEnum RHFactor { get; set; }
+        public DateTime LastDonation { get; set; }
         public bool Active { get; set; }
         public List<Donation>? Donations { get; private set; }
         public Address? Address { get; set; }
+
+        public bool IsValid()
+        {
+            if (Gender == GenderEnum.Female && LastDonation.AddDays(90) > DateTime.Now)
+                return false;
+
+            if (Gender == GenderEnum.Male && LastDonation.AddDays(60) > DateTime.Now)
+                return false;
+
+            if (Weight < 50)
+                return false;
+
+            if (BirthDate.AddYears(18) > DateTime.Now)
+                return false;
+
+            if (Active == false)
+                return false;
+
+            return true;
+        }
 
         public void Update (string email, double weight)
         {
             Email = email;
             Weight = weight;
+        }
+
+        public void UpdateLastDonation()
+        {
+            LastDonation = DateTime.Now;
         }
 
         public void Delete()

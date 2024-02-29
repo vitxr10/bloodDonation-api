@@ -11,6 +11,7 @@ namespace BloodDonation.Core.Repositories
     {
         Task<List<Donor>> GetAllAsync();
         Task<Donor> GetByIdAsync(int id);
+        Task<bool> GetByEmailAsync(string email);
         Task<int> CreateAsync(Donor donor);
         Task SaveAsync();
 

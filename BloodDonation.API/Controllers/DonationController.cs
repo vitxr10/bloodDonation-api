@@ -45,11 +45,11 @@ namespace BloodDonation.API.Controllers
             {
                 int id = await _mediatR.Send(command);
 
-                return CreatedAtAction(nameof(GetById), new { id = id }, command);
+                return CreatedAtAction(nameof(GetById), new { id }, command);
             }
-            catch(DirectoryNotFoundException ex)
+            catch(Exception ex)
             {
-                return NotFound(ex.Message);
+                return BadRequest(ex.Message);
             }
 
         }

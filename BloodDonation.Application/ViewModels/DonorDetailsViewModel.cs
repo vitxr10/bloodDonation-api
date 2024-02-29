@@ -10,7 +10,7 @@ namespace BloodDonation.Application.ViewModels
 {
     public class DonorDetailsViewModel
     {
-        public DonorDetailsViewModel(int id, string fullName, string email, DateTime birthDate, GenderEnum gender, double weight, BloodTypeEnum bloodType, RHFactorEnum rHFactor, bool active)
+        public DonorDetailsViewModel(int id, string fullName, string email, DateTime birthDate, GenderEnum gender, double weight, BloodTypeEnum bloodType, RHFactorEnum rHFactor, DateTime lastDonation, bool active)
         {
             Id = id;
             FullName = fullName;
@@ -20,6 +20,7 @@ namespace BloodDonation.Application.ViewModels
             Weight = weight;
             BloodType = bloodType;
             RHFactor = rHFactor;
+            LastDonation = lastDonation;
             Active = active;
         }
 
@@ -31,6 +32,7 @@ namespace BloodDonation.Application.ViewModels
         public double Weight { get; set; }
         public BloodTypeEnum BloodType { get; set; }
         public RHFactorEnum RHFactor { get; set; }
+        public DateTime LastDonation { get; set; }
         public bool Active { get; set; }
     }
 }

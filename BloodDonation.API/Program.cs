@@ -2,14 +2,19 @@ using BloodDonation.Application.Commands.CreateDonor;
 using BloodDonation.Core.Repositories;
 using BloodDonation.Infrastructure.Persistence.Context;
 using BloodDonation.Infrastructure.Persistence.Repositories;
+using FluentValidation.AspNetCore;
+using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using BloodDonation.Application.Validators;
+using BloodDonation.API.Filters;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add(typeof(ValidationFilter)))
+    .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateDonorCommandValidator>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,7 +23,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<BloodDonationDbContext>(options => options.UseInMemoryDatabase("BloodDonationDb"));
 
 // mediatR
-//builder.Services.AddMediatR(typeof(CreateDonorCommand));
 var myHandlers = AppDomain.CurrentDomain.Load("BloodDonation.Application");
 builder.Services.AddMediatR(m => m.RegisterServicesFromAssemblies(myHandlers));
 
@@ -26,8 +30,6 @@ builder.Services.AddMediatR(m => m.RegisterServicesFromAssemblies(myHandlers));
 builder.Services.AddScoped<IDonorRepository, DonorRepository>();
 builder.Services.AddScoped<IDonationRepository, DonationRepository>();
 builder.Services.AddScoped<IStockRepository, StockRepository>();
-
-
 
 var app = builder.Build();
 

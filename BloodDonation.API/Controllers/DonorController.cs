@@ -44,9 +44,17 @@ namespace BloodDonation.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateDonorCommand command)
         {
-            int id = await _mediatR.Send(command);
+            try
+            {
+                int id = await _mediatR.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id }, command);
+                return CreatedAtAction(nameof(GetById), new { id }, command);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
         }
 
         [HttpPut("{id}")]
