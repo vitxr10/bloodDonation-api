@@ -21,7 +21,10 @@ namespace BloodDonation.Application.Commands.UpdateDonor
         {
             var donor = await _donorRepository.GetByIdAsync(request.Id);
 
-            donor.Update(request.Email, request.Weight);
+            if (donor == null)
+                throw new Exception("Doador não encontrado.");
+
+            donor.Update(request.Weight);
 
             await _donorRepository.SaveAsync();
         }

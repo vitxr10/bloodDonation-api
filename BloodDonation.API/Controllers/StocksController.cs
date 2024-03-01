@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BloodDonation.API.Controllers
 {
-    [Route("api/stock")]
+    [Route("api/stocks")]
     [ApiController]
-    public class StockController : ControllerBase
+    public class StocksController : ControllerBase
     {
         private readonly IMediator _mediatR;
-        public StockController(IMediator mediatR)
+        public StocksController(IMediator mediatR)
         {
             _mediatR = mediatR;
         }
@@ -31,31 +31,34 @@ namespace BloodDonation.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetStockByIdQuery(id);
+            try
+            {
+                var query = new GetStockByIdQuery(id);
 
-            var stock = await _mediatR.Send(query);
+                var stock = await _mediatR.Send(query);
 
-            return Ok(stock);
+                return Ok(stock);
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+
         }
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateStockCommand command)
         {
-            var id = await _mediatR.Send(command);
+            try
+            {
+                var id = await _mediatR.Send(command);
 
-            return CreatedAtAction(nameof(GetById), new { id }, command);
+                return CreatedAtAction(nameof(GetById), new { id }, command);
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
-
-        //[HttpPut("{id}")]
-        //public IActionResult Put(int id, [FromBody] Donor donor)
-        //{
-        //    return NoContent();
-        //}
-
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    return NoContent();
-        //}
     }
 }

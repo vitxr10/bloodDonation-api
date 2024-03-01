@@ -36,6 +36,18 @@ namespace BloodDonation.Infrastructure.Persistence.Repositories
             return await _dbContext.Donations.SingleOrDefaultAsync(d => d.Id == id);
         }
 
+        public async Task<List<Donation>> GetDonationsHistoric(int id)
+        {
+            var donations = await _dbContext.Donations.Where(dn => dn.DonorId == id).ToListAsync();
+
+            return donations;
+        }
+
+        public async Task<List<Donation>> GetDonationsLast30Days()
+        {
+            return await _dbContext.Donations.Where(dn => dn.DonationDate.Date >= DateTime.Now.Date.AddDays(-30)).ToListAsync();
+        }
+
         public async Task SaveAsync()
         {
             await _dbContext.SaveChangesAsync();

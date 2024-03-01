@@ -21,6 +21,9 @@ namespace BloodDonation.Application.Queries.GetStockById
         {
             var stock = await _stockRepository.GetByIdAsync(request.Id);
 
+            if (stock == null)
+                throw new Exception("Estoque não encontrado.");
+
             var stockViewModel = new StockViewModel(stock.Id, stock.BloodType, stock.RHFactor, stock.AmountInML);
 
             return stockViewModel;

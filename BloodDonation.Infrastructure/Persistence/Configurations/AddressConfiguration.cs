@@ -16,10 +16,6 @@ namespace BloodDonation.Infrastructure.Persistence.Configurations
             builder.HasKey(a => a.Id);
 
             builder.ToTable("Address");
-
-            //builder.HasOne(a => a.Donor)
-            //    .WithOne(d => d.Address)
-            //    .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

@@ -20,6 +20,9 @@ namespace BloodDonation.Application.Commands.DeleteDonor
         {
             var donor = await _donorRepository.GetByIdAsync(request.Id);
 
+            if (donor == null)
+                throw new Exception("Doador não encontrado.");
+
             donor.Delete();
 
             await _donorRepository.SaveAsync();

@@ -12,11 +12,6 @@ namespace BloodDonation.Application.Validators
     {
         public UpdateDonorCommandValidator()
         {
-            RuleFor(d => d.Email)
-                .NotEmpty()
-                .NotNull()
-                .EmailAddress();
-
             RuleFor(d => d.Weight)
                 .NotEmpty()
                 .NotNull()

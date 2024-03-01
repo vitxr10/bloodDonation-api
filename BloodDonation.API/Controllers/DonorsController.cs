@@ -2,6 +2,7 @@
 using BloodDonation.Application.Commands.DeleteDonor;
 using BloodDonation.Application.Commands.UpdateDonor;
 using BloodDonation.Application.Queries.GetAllDonors;
+using BloodDonation.Application.Queries.GetDonationsHistoric;
 using BloodDonation.Application.Queries.GetDonor;
 using BloodDonation.Core.Entities;
 using BloodDonation.Core.Repositories;
@@ -11,12 +12,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BloodDonation.API.Controllers
 {
-    [Route("api/donor")]
+    [Route("api/donors")]
     [ApiController]
-    public class DonorController : ControllerBase
+    public class DonorsController : ControllerBase
     {
         private readonly IMediator _mediatR;
-        public DonorController(IMediator mediatR)
+        public DonorsController(IMediator mediatR)
         {
             _mediatR = mediatR;
         }
@@ -34,12 +35,36 @@ namespace BloodDonation.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetDonorByIdQuery(id);
+            try
+            {
+                var query = new GetDonorByIdQuery(id);
 
-            var donor = await _mediatR.Send(query);
+                var donor = await _mediatR.Send(query);
 
-            return Ok(donor);
+                return Ok(donor);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
+
+        //[HttpGet("{id}/donations")]
+        //public async Task<IActionResult> GetDonationsHistoric(int id)
+        //{
+        //    try
+        //    {
+        //        var query = new GetDonationsHistoricQuery(id);
+
+        //        var donor = await _mediatR.Send(query);
+
+        //        return Ok(donor);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return NotFound(ex.Message);
+        //    }
+        //}
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateDonorCommand command)
@@ -53,28 +78,43 @@ namespace BloodDonation.API.Controllers
             catch(Exception ex)
             {
                 return BadRequest(ex.Message);
+
             }
-            
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateDonorCommand command)
         {
-            command.Id = id;
+            try
+            {
+                command.Id = id;
 
-            await _mediatR.Send(command);
+                await _mediatR.Send(command);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var command = new DeleteDonorCommand(id);
+            try
+            {
+                var command = new DeleteDonorCommand(id);
 
-            await _mediatR.Send(command);
+                await _mediatR.Send(command);
 
-            return NoContent();
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

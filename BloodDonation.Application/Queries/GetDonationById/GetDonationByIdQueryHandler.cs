@@ -21,6 +21,9 @@ namespace BloodDonation.Application.Queries.GetDonationById
         {
             var donation = await _donationRepository.GetByIdAsync(request.Id);
 
+            if (donation == null)
+                throw new Exception("Doação não foi encontrada");
+
             var donationDetailsViewModel = new DonationDetailsViewModel
                 (
                     donation.Id,

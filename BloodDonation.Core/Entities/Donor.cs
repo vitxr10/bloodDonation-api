@@ -55,9 +55,8 @@ namespace BloodDonation.Core.Entities
             return true;
         }
 
-        public void Update (string email, double weight)
+        public void Update (double weight)
         {
-            Email = email;
             Weight = weight;
         }
 

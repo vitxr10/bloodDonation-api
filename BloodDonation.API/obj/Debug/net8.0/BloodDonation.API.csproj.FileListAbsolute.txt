@@ -3,7 +3,6 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.AssemblyInfoInputs.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.AssemblyInfo.cs
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.csproj.CoreCompileInputs.cache
-C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.sourcelink.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\appsettings.Development.json
@@ -15,9 +14,13 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\BloodDonation.API.pdb
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Humanizer.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\MediatR.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\MediatR.Contracts.dll
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -130,6 +133,7 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\BloodDonation.Application.pdb
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\BloodDonation.Infrastructure.pdb
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\BloodDonation.Core.pdb
+C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\staticwebassets\msbuild.BloodDonation.API.Microsoft.AspNetCore.StaticWebAssets.props
@@ -144,7 +148,3 @@ C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\De
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.pdb
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\BloodDonation.API.genruntimeconfig.cache
 C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\obj\Debug\net8.0\ref\BloodDonation.API.dll
-C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
-C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.dll
-C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
-C:\Users\vitor\OneDrive\Área de Trabalho\BloodDonation\BloodDonation.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

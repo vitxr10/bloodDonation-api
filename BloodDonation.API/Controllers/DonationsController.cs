@@ -8,12 +8,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BloodDonation.API.Controllers
 {
-    [Route("api/donation")]
+    [Route("api/donations")]
     [ApiController]
-    public class DonationController : ControllerBase
+    public class DonationsController : ControllerBase
     {
         private readonly IMediator _mediatR;
-        public DonationController(IMediator mediatR)
+        public DonationsController(IMediator mediatR)
         {
             _mediatR = mediatR;
         }
@@ -31,11 +31,18 @@ namespace BloodDonation.API.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
-            var query = new GetDonationByIdQuery(id);
+            try
+            {
+                var query = new GetDonationByIdQuery(id);
 
-            var donation = await _mediatR.Send(query);
+                var donation = await _mediatR.Send(query);
 
-            return Ok(donation);
+                return Ok(donation);
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [HttpPost]
@@ -47,11 +54,14 @@ namespace BloodDonation.API.Controllers
 
                 return CreatedAtAction(nameof(GetById), new { id }, command);
             }
-            catch(Exception ex)
+            catch (DirectoryNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
-
         }
 
     }

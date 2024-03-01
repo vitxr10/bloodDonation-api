@@ -17,7 +17,6 @@ namespace BloodDonation.Application.Commands.UpdateDonor
         }
 
         public int Id { get; set; }
-        public string Email { get; set; }
         public double Weight { get; set; }
     }
 }

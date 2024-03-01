@@ -27,14 +27,14 @@ namespace BloodDonation.Application.Commands.CreateDonation
 
             var donor = await _donorRepository.GetByIdAsync(donation.DonorId);
             if (donor == null)
-                throw new Exception("Doador não encontrado.");
+                throw new DirectoryNotFoundException("Doador não encontrado.");
 
             if (!donor.IsValid())
                 throw new Exception("O doador não cumpre os requisitos para fazer uma doação.");
 
             var stock = await _stockRepository.GetByBloodTypeAsync(donor.BloodType, donor.RHFactor);
             if (stock == null)
-                throw new Exception("Não há estoque para esse tipo sanguíneo.");
+                throw new Exception("Não existe um estoque para esse tipo sanguíneo.");
 
             await _donationRepository.CreateAsync(donation);
 

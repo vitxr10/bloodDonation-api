@@ -20,7 +20,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // context
-builder.Services.AddDbContext<BloodDonationDbContext>(options => options.UseInMemoryDatabase("BloodDonationDb"));
+var connectionString = builder.Configuration.GetConnectionString("BloodDonationDb");
+builder.Services.AddDbContext<BloodDonationDbContext>(options => options.UseSqlServer(connectionString));
 
 // mediatR
 var myHandlers = AppDomain.CurrentDomain.Load("BloodDonation.Application");
