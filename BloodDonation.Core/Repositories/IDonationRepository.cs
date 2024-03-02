@@ -1,4 +1,5 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Core.DTOs;
+using BloodDonation.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +13,7 @@ namespace BloodDonation.Core.Repositories
         Task<List<Donation>> GetAllAsync();
         Task<Donation> GetByIdAsync(int id);
         Task<List<Donation>> GetDonationsHistoric(int id);
-        Task<List<Donation>> GetDonationsLast30Days();
+        Task<List<DonationsLast30DaysDTO>> GetDonationsLast30Days();
         Task<int> CreateAsync(Donation donation);
         Task SaveAsync();
     }

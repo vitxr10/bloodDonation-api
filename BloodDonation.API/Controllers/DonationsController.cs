@@ -18,6 +18,9 @@ namespace BloodDonation.API.Controllers
             _mediatR = mediatR;
         }
 
+        /// <summary>
+        /// Listar todas as doações
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -28,6 +31,9 @@ namespace BloodDonation.API.Controllers
             return Ok(donations);
         }
 
+        /// <summary>
+        /// Obter doação por id
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -45,6 +51,9 @@ namespace BloodDonation.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Cadastrar uma doação
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateDonationCommand command)
         {

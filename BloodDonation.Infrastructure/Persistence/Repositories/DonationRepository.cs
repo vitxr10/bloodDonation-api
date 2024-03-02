@@ -1,4 +1,6 @@
-﻿using BloodDonation.Core.Entities;
+﻿using BloodDonation.Application.ViewModels;
+using BloodDonation.Core.DTOs;
+using BloodDonation.Core.Entities;
 using BloodDonation.Core.Repositories;
 using BloodDonation.Infrastructure.Persistence.Context;
 using Microsoft.EntityFrameworkCore;
@@ -43,9 +45,24 @@ namespace BloodDonation.Infrastructure.Persistence.Repositories
             return donations;
         }
 
-        public async Task<List<Donation>> GetDonationsLast30Days()
+        public async Task<List<DonationsLast30DaysDTO>> GetDonationsLast30Days()
         {
-            return await _dbContext.Donations.Where(dn => dn.DonationDate.Date >= DateTime.Now.Date.AddDays(-30)).ToListAsync();
+            var donations = await _dbContext.Donations
+                .Where(dn => dn.DonationDate.Date >= DateTime.Now.Date.AddDays(-30))
+                .Join(_dbContext.Donors,
+                            donation => donation.DonorId,
+                            donor => donor.Id,
+                (donation, donor) => new DonationsLast30DaysDTO
+                (
+                    donation.DonorId,
+                    donor.FullName,
+                    donor.BloodType,
+                    donor.RHFactor,
+                    donation.AmountInML
+                ))
+                .ToListAsync();
+
+            return donations;
         }
 
         public async Task SaveAsync()

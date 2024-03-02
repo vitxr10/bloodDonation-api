@@ -1,5 +1,6 @@
 ﻿using BloodDonation.Application.Queries.GetAllStocks;
 using BloodDonation.Application.Queries.GetBloodTypeReport;
+using BloodDonation.Application.Queries.GetDonationReportLast30Days;
 using BloodDonation.Application.Queries.GetDonationsHistoric;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -17,7 +18,10 @@ namespace BloodDonation.API.Controllers
             _mediatR = mediatR;
         }
 
-        [HttpGet("/donors/{id}/donations")]
+        /// <summary>
+        /// Obter histórico de doações de um doador
+        /// </summary>
+        [HttpGet("donors/{id}/donations")]
         public async Task<IActionResult> GetDonationsHistoric(int id)
         {
             try
@@ -34,7 +38,10 @@ namespace BloodDonation.API.Controllers
             }
         }
 
-        [HttpGet("/stocks")]
+        /// <summary>
+        /// Obter relatório de estoque por tipo sanguíneo 
+        /// </summary>
+        [HttpGet("stocks")]
         public async Task<IActionResult> GetBloodTypeReport()
         {
             var query = new GetBloodTypeReportQuery();
@@ -44,14 +51,17 @@ namespace BloodDonation.API.Controllers
             return Ok(stocks);
         }
 
-        [HttpGet("/donations")]
+        /// <summary>
+        /// Obter relatório de doações dos últimos 30 dias
+        /// </summary>
+        [HttpGet("donations")]
         public async Task<IActionResult> GetDonationReportLast30Days()
         {
+            var query = new GetDonationsLast30DaysQuery();
 
+            var donationsLast30Days = await _mediatR.Send(query);
+
+            return Ok(donationsLast30Days);
         }
-
-
-
-
     }
 }

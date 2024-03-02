@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using BloodDonation.Application.Validators;
 using BloodDonation.API.Filters;
+using System.Reflection;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +19,24 @@ builder.Services.AddControllers(options => options.Filters.Add(typeof(Validation
     .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateDonorCommandValidator>());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(opt =>
+{
+    opt.SwaggerDoc("v1", new OpenApiInfo 
+    { 
+        Title = "BloodDonation.API", 
+        Version = "v1",
+        Contact = new OpenApiContact
+        {
+            Name = "Vitor Santos Alves",
+            Url = new Uri("https://www.linkedin.com/in/vitor-santos-alves/")
+        }
+    
+    });
+
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    opt.IncludeXmlComments(xmlPath);
+});
 
 // context
 var connectionString = builder.Configuration.GetConnectionString("BloodDonationDb");

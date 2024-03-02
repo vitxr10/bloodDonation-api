@@ -18,6 +18,9 @@ namespace BloodDonation.API.Controllers
             _mediatR = mediatR;
         }
 
+        /// <summary>
+        /// Listar todos os estoques
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -28,6 +31,9 @@ namespace BloodDonation.API.Controllers
             return Ok(stocks);
         }
 
+        /// <summary>
+        /// Obter estoque por id
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -46,6 +52,9 @@ namespace BloodDonation.API.Controllers
 
         }
 
+        /// <summary>
+        /// Adicionar novo estoque
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateStockCommand command)
         {

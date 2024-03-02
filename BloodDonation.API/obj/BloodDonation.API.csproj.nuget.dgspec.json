@@ -241,6 +241,9 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
+              "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\BloodDonation\\BloodDonation.Application\\BloodDonation.Application.csproj": {
+                "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\BloodDonation\\BloodDonation.Application\\BloodDonation.Application.csproj"
+              },
               "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\BloodDonation\\BloodDonation.Core\\BloodDonation.Core.csproj": {
                 "projectPath": "C:\\Users\\vitor\\OneDrive\\Área de Trabalho\\BloodDonation\\BloodDonation.Core\\BloodDonation.Core.csproj"
               }

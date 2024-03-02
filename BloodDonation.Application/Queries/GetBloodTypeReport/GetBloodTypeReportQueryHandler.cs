@@ -21,7 +21,8 @@ namespace BloodDonation.Application.Queries.GetBloodTypeReport
             var stocks = await _stockRepository.GetAllAsync();
 
             var bloodTypeReportViewModel = stocks
-                .Select(r => new BloodTypeReportViewModel(r.BloodType, r.RHFactor, r.AmountInML));
+                .Select(r => new BloodTypeReportViewModel(r.BloodType, r.RHFactor, r.AmountInML))
+                .ToList();
 
             return bloodTypeReportViewModel;
         }

@@ -20,6 +20,7 @@ namespace BloodDonation.Infrastructure.Persistence.Configurations
             builder.HasMany(d => d.Donations)
                 .WithOne(dn => dn.Donor)
                 .OnDelete(DeleteBehavior.Restrict);
+            //FOREIGN KEY
 
             builder.HasOne(d => d.Address)
                 .WithOne(a => a.Donor)

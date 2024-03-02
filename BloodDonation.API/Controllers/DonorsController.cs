@@ -22,6 +22,9 @@ namespace BloodDonation.API.Controllers
             _mediatR = mediatR;
         }
 
+        /// <summary>
+        /// Listar todos doadores
+        /// </summary>
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -32,6 +35,9 @@ namespace BloodDonation.API.Controllers
             return Ok(donors);
         }
 
+        /// <summary>
+        /// Obter doador por id
+        /// </summary>
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -49,23 +55,9 @@ namespace BloodDonation.API.Controllers
             }
         }
 
-        //[HttpGet("{id}/donations")]
-        //public async Task<IActionResult> GetDonationsHistoric(int id)
-        //{
-        //    try
-        //    {
-        //        var query = new GetDonationsHistoricQuery(id);
-
-        //        var donor = await _mediatR.Send(query);
-
-        //        return Ok(donor);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return NotFound(ex.Message);
-        //    }
-        //}
-
+        /// <summary>
+        /// Cadastrar um doador
+        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] CreateDonorCommand command)
         {
@@ -82,6 +74,9 @@ namespace BloodDonation.API.Controllers
             }
         }
 
+        /// <summary>
+        /// Atualizar dados de um doador
+        /// </summary>
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateDonorCommand command)
         {
@@ -100,6 +95,9 @@ namespace BloodDonation.API.Controllers
 
         }
 
+        /// <summary>
+        /// Excluir um doador
+        /// </summary>
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
